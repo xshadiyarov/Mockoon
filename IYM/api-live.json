@@ -1,7 +1,7 @@
 {
   "uuid": "bd7ae6f0-a9c0-4368-bea1-5910c1adcf91",
   "lastMigration": 33,
-  "name": "IYM - api-live",
+  "name": "IYM - api-live [OLD]",
   "endpointPrefix": "api-live",
   "latency": 0,
   "port": 3001,
@@ -793,709 +793,6 @@
       "streamingInterval": 0
     },
     {
-      "uuid": "5855e7ce-7ee8-4f44-933c-6b63f9d8d341",
-      "type": "http",
-      "documentation": "",
-      "method": "post",
-      "endpoint": "v1/transfer/commission/",
-      "responses": [
-        {
-          "uuid": "dbd10c63-610a-4bbd-bfb8-fb88a2f63e9a",
-          "body": "",
-          "latency": 0,
-          "statusCode": 400,
-          "label": "No response",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "l6qp",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
-          "uuid": "448c98f6-4516-4e8c-9365-9492a2b48364",
-          "body": "",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "p2p (Swap data)",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "dmxk",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "body",
-              "modifier": "source.type",
-              "value": "card",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.type",
-              "value": "^(card|pan)$",
-              "invert": false,
-              "operator": "regex"
-            },
-            {
-              "target": "body",
-              "modifier": "source.id",
-              "value": "p",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.id",
-              "value": "p",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "AND",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
-          "uuid": "e421df72-f4c9-44bd-94e8-459e261b509e",
-          "body": "",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "p2a",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "406i",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "body",
-              "modifier": "source.type",
-              "value": "card",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.type",
-              "value": "account",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "source.id",
-              "value": "p",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.id",
-              "value": "a",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "AND",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
-          "uuid": "4a32ca0f-5fef-4530-8cf8-f36d7dc3d977",
-          "body": "",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "v2a",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "60g4",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "body",
-              "modifier": "source.type",
-              "value": "card",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.type",
-              "value": "account",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "source.id",
-              "value": "v",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.id",
-              "value": "a",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "AND",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
-          "uuid": "45453cf2-17da-41b9-87ca-9db7e62bc4c5",
-          "body": "",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "a2a",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "zimq",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "body",
-              "modifier": "source.type",
-              "value": "account",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.type",
-              "value": "account",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "source.id",
-              "value": "a",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.id",
-              "value": "a",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "AND",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
-          "uuid": "139940b8-b70d-45a5-ac14-4e1b031f6f40",
-          "body": "",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "w2a",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "d8px",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "body",
-              "modifier": "source.type",
-              "value": "wallet",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.type",
-              "value": "account",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "source.id",
-              "value": "w",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.id",
-              "value": "a",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "AND",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
-          "uuid": "1664263d-f2e5-4bb0-a8b2-a55e7a2e131f",
-          "body": "",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "w2p",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "xg5y",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "body",
-              "modifier": "source.type",
-              "value": "wallet",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.type",
-              "value": "^(card|pan)$",
-              "invert": false,
-              "operator": "regex"
-            },
-            {
-              "target": "body",
-              "modifier": "source.id",
-              "value": "w",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.id",
-              "value": "p",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "AND",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
-          "uuid": "59d2a9bf-bb04-4248-84f7-fe5e698b7926",
-          "body": "",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "a2p",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "cutp",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "body",
-              "modifier": "source.type",
-              "value": "account",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.type",
-              "value": "^(card|pan)$",
-              "invert": false,
-              "operator": "regex"
-            },
-            {
-              "target": "body",
-              "modifier": "source.id",
-              "value": "a",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.id",
-              "value": "p",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "AND",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
-          "uuid": "63d5bf70-53d1-407e-b328-114a5550762b",
-          "body": "",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "a2w",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "avxl",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "body",
-              "modifier": "source.type",
-              "value": "account",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.type",
-              "value": "wallet",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "source.id",
-              "value": "a",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.id",
-              "value": "w",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "AND",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
-          "uuid": "d74b6387-5aa5-4315-9509-3e93ed091c59",
-          "body": "",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "p2w",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "xmvk",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "body",
-              "modifier": "source.type",
-              "value": "card",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.type",
-              "value": "wallet",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "source.id",
-              "value": "p",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.id",
-              "value": "w",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "AND",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
-          "uuid": "b8593f06-c18f-4ef1-8f32-b8e03cb2f129",
-          "body": "",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "w2w",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "05py",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "body",
-              "modifier": "source.type",
-              "value": "wallet",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.type",
-              "value": "wallet",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "source.id",
-              "value": "w",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.id",
-              "value": "w",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "AND",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
-          "uuid": "b2858529-1586-4838-9240-c1385121dade",
-          "body": "",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "pcv",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "42ic",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "body",
-              "modifier": "source.type",
-              "value": "card",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.type",
-              "value": "^(card|pan)$",
-              "invert": false,
-              "operator": "regex"
-            },
-            {
-              "target": "body",
-              "modifier": "source.id",
-              "value": "p",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.id",
-              "value": "cv",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "AND",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
-          "uuid": "fb06ba24-4c50-4630-aa67-8333c4c65772",
-          "body": "",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "vcp",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "lynl",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "body",
-              "modifier": "source.type",
-              "value": "card",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.type",
-              "value": "^(card|pan)$",
-              "invert": false,
-              "operator": "regex"
-            },
-            {
-              "target": "body",
-              "modifier": "source.id",
-              "value": "vc",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.id",
-              "value": "p",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "AND",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
-          "uuid": "a07c4857-a390-4f4f-a98f-f708cb70f6f8",
-          "body": "",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "v2v",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "z16k",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "body",
-              "modifier": "source.type",
-              "value": "card",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.type",
-              "value": "^(card|pan)$",
-              "invert": false,
-              "operator": "regex"
-            },
-            {
-              "target": "body",
-              "modifier": "source.id",
-              "value": "v",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.id",
-              "value": "v",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "AND",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
-          "uuid": "d9dfd5d4-6b4d-4523-a1bb-a9140678090f",
-          "body": "",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "a2v",
-          "headers": [],
-          "bodyType": "DATABUCKET",
-          "filePath": "",
-          "databucketID": "0s04",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "body",
-              "modifier": "source.type",
-              "value": "account",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.type",
-              "value": "^(card|pan)$",
-              "invert": false,
-              "operator": "regex"
-            },
-            {
-              "target": "body",
-              "modifier": "source.id",
-              "value": "a",
-              "invert": false,
-              "operator": "equals"
-            },
-            {
-              "target": "body",
-              "modifier": "destination.id",
-              "value": "v",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "AND",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": false,
-          "crudKey": "id",
-          "callbacks": []
-        }
-      ],
-      "responseMode": null,
-      "streamingMode": null,
-      "streamingInterval": 0
-    },
-    {
       "uuid": "0ed135fb-cfc6-4065-a624-8b4402c2d3d7",
       "type": "http",
       "documentation": "",
@@ -2251,12 +1548,1530 @@
       "responseMode": null,
       "streamingMode": null,
       "streamingInterval": 0
+    },
+    {
+      "uuid": "92d188bb-40c5-4409-a9a4-2e012c1e0460",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/transfer/commission/",
+      "responses": [
+        {
+          "uuid": "94808210-6c76-4461-8549-bfbf46f7ba48",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "p2a",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "406i",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "^[1-9]+$",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "^[1-9]+$",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "72ce4336-253f-4ca4-9802-266f206c6877",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "v2a",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "60g4",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "^[1-9]+$",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "^[1-9]+$",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "91e0ba9a-1cb3-4e8e-b96a-65e33436efc4",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/transfer/commission/ (OLD)",
+      "responses": [
+        {
+          "uuid": "154b7679-59d4-4589-83e5-d326e5792248",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "No response",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "l6qp",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "59dfa27c-ad70-4b47-aa08-dba4ad0e00ab",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "p2p (Swap data)",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "dmxk",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "^(card|pan)$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "^[1-9]+$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "^[1-9]+$",
+              "invert": false,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "1c2a1bf5-9b6f-43bf-bd4e-23ea52c9d9a4",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "p2a",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "406i",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "p",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "04f23825-c489-446b-938c-167cb739d168",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "v2a",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "60g4",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "v",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "4ec225db-5fe6-49d1-9755-9669b1a4c86e",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "a2a",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "zimq",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "4801d25a-46da-4a38-b4b1-d47a2345fc3c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "w2a",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "d8px",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "wallet",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "w",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "cb67826b-7878-478b-8249-827977b8c406",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "w2p",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "xg5y",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "wallet",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "^(card|pan)$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "w",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "p",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "cc560d57-0875-4360-8f4a-488d2d5a57c1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "a2p",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "cutp",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "^(card|pan)$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "p",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "1b9fc9d3-c6cf-447d-8c82-3f1ec3596f58",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "a2w",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "avxl",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "wallet",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "w",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "b14fce02-6536-4a9c-adaa-d3ff472bda09",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "p2w",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "xmvk",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "wallet",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "p",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "w",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "267aaba1-d34c-45a8-b903-4573818872e1",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "w2w",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "05py",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "wallet",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "wallet",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "w",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "w",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "59ffdcad-e646-49ca-8860-86290fb3eb3b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "pcv",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "42ic",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "^(card|pan)$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "p",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "cv",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "698f20ef-5442-4da9-a7fb-6b32a25d327d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "vcp",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "lynl",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "^(card|pan)$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "vc",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "p",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "55267a8a-8e3e-425d-afde-abbdc765e974",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "v2v",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "z16k",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "^(card|pan)$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "v",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "v",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "d24ed946-a5b6-4b8d-b42b-1fdba25e8808",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "a2v",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "0s04",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "^(card|pan)$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "v",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "6aa796fc-0abb-4712-8a16-31eaf03d200a",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/transfer/commission/",
+      "responses": [
+        {
+          "uuid": "60382554-3156-4565-8df3-ebbaf5b1f3de",
+          "body": "",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "No response",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "l6qp",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "367cf0ab-147e-4043-849e-16a58b1ade49",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "p2p (Swap data)",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "dmxk",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "^(card|pan)$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "^[1-9]+$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "^[1-9]+$",
+              "invert": false,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "02d2117f-27da-40ac-b7a3-865bd3db9ccb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "p2a",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "406i",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "p",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "4366d7d0-08f7-4b11-be1a-1352688709f2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "v2a",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "60g4",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "v",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "8abb980d-f6a5-4034-ac08-aecd9cc88dae",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "a2a",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "zimq",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "d923f723-d9cd-4832-8d22-f8f5c1202c77",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "w2a",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "d8px",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "wallet",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "w",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "d85fb1d3-373c-41f7-9e91-942dc4e8d6fa",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "w2p",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "xg5y",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "wallet",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "^(card|pan)$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "w",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "p",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "8e9a4632-e66b-489a-a81f-3004206992d3",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "a2p",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "cutp",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "^(card|pan)$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "p",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "ba186993-1a19-43d0-a62a-3e5c5a98b5bb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "a2w",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "avxl",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "wallet",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "w",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "bdb8712a-3d66-4a01-8ccd-6a2802c5d7e5",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "p2w",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "xmvk",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "wallet",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "p",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "w",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "3928dba9-17af-4193-8f0a-559838f76da2",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "w2w",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "05py",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "wallet",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "wallet",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "w",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "w",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "6a150ef0-ff18-4a48-9cc3-a90eed18d26c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "pcv",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "42ic",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "^(card|pan)$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "p",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "cv",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "270a9a8d-0592-4b7d-92a2-1c3b33affd98",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "vcp",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "lynl",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "^(card|pan)$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "vc",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "p",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "85db2f61-1770-4d9e-ae9f-0911bc55e872",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "v2v",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "z16k",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "card",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "^(card|pan)$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "v",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "v",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "8c3eb668-de37-4d92-b2d4-04f3377cf360",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "a2v",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "0s04",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "source.type",
+              "value": "account",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.type",
+              "value": "^(card|pan)$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "source.id",
+              "value": "a",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "destination.id",
+              "value": "v",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": "FALLBACK",
+      "streamingMode": null,
+      "streamingInterval": 0
     }
   ],
   "rootChildren": [
     {
       "type": "route",
-      "uuid": "5855e7ce-7ee8-4f44-933c-6b63f9d8d341"
+      "uuid": "6aa796fc-0abb-4712-8a16-31eaf03d200a"
+    },
+    {
+      "type": "route",
+      "uuid": "92d188bb-40c5-4409-a9a4-2e012c1e0460"
     },
     {
       "type": "route",
@@ -2265,6 +3080,10 @@
     {
       "type": "route",
       "uuid": "0ed135fb-cfc6-4065-a624-8b4402c2d3d7"
+    },
+    {
+      "type": "route",
+      "uuid": "91e0ba9a-1cb3-4e8e-b96a-65e33436efc4"
     }
   ],
   "proxyMode": false,
