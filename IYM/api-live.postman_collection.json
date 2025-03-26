@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "3d98c4d4-a114-440e-a6b2-ad86bc0bdb85",
+		"name": "api-live",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38560477"
+	},
+	"item": [
+		{
+			"name": "v1/transfer/commission",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "// Supports: p2p p2a v2a a2a w2a w2p a2p a2w p2w w2w pcv vcp v2v a2v\r\n{\r\n    \"source\": {\r\n        \"type\": \"card\", // card, wallet, account\r\n        \"id\": \"1\"\r\n    },\r\n    \"destination\": {\r\n        \"type\": \"card\", // card, wallet, account, pan\r\n        \"id\": \"1\"\r\n    },\r\n    \"include_fee\": true, // true, false\r\n    \"amount\": 100000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3002/api-live/v1/transfer/commission/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3002",
+					"path": [
+						"api-live",
+						"v1",
+						"transfer",
+						"commission",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/v1/transfer/prepayment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "// Supports: p2p p2a v2a a2a w2a w2p a2p a2w p2w w2w pcv vcp v2v a2v\r\n{\r\n    \"source\": {\r\n        \"type\": \"card\", // card, wallet, account\r\n        \"id\": \"1\"\r\n    },\r\n    \"destination\": {\r\n        \"type\": \"card\", // card, wallet, account, pan\r\n        \"id\": \"1\"\r\n    },\r\n    \"include_fee\": true, // true, false\r\n    \"amount\": 100000,\r\n    \"comment\": \"some comment here...\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3002/api-live/v1/transfer/prepayment/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3002",
+					"path": [
+						"api-live",
+						"v1",
+						"transfer",
+						"prepayment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/v1/transfer/payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"123456\" // XXXXXX\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3002/api-live/v1/transfer/payment/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3002",
+					"path": [
+						"api-live",
+						"v1",
+						"transfer",
+						"payment",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
