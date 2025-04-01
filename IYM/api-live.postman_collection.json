@@ -110,6 +110,76 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "/v1/card/holder/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"6262470064292654\",\r\n    \"type\": \"pan\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3002/api-live/v1/card/holder/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3002",
+					"path": [
+						"api-live",
+						"v1",
+						"card",
+						"holder",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/v1/card/byphone/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phone\": \"998974446717\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3002/api-live/v1/card/byphone/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3002",
+					"path": [
+						"api-live",
+						"v1",
+						"card",
+						"byphone",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

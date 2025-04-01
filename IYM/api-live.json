@@ -223,6 +223,129 @@
       "responseMode": null,
       "streamingMode": null,
       "streamingInterval": 0
+    },
+    {
+      "uuid": "9e075322-2fc9-497a-b40f-4d2d3b57fd69",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/card/holder/",
+      "responses": [
+        {
+          "uuid": "815e8568-d57d-4eeb-a737-39419cfdc697",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "joc1",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "48088cec-1b38-4520-b1cf-11773fb19218",
+          "body": "{{setVar 'alt_action' 0}}\n\n{{setVar 'req_code' 0}}\n{{setVar 'is_error' (oneOf (array false false false false false false false false false true))}}\n{{#if (getVar 'is_error')}}\n  {{setVar 'error' (oneOf (array 'invalid_pan' 'please_try_vd_2_transfer' 'please_try_me_2_transfer' 'please_try_ms_2_transfer'))}}\n  {{setVar 'req_code' 100}}\n{{/if}}\n{{#switch (getVar 'error')}}\n  {{#case 'invalid_pan'}}\n    {{setVar 'error_text' 'Неправильный номер карты получателя'}}\n  {{/case}}\n  {{#case 'please_try_vd_2_transfer'}}\n    {{setVar 'error_text' 'Для перевода средств на карты VISA других банков, воспользуйтесь услугой VISA Direct во вкладке Услуги'}}\n    {{setVar 'alt_action' 'ALT_ACTION - ERRORS_TRANSLATE.please_try_vd_2_transfer'}}\n  {{/case}}\n  {{#case 'please_try_ms_2_transfer'}}\n    {{setVar 'error_text' 'Для перевода средств на карты Mastercard других банков, воспользуйтесь услугой MoneySend во вкладке Услуги'}}\n    {{setVar 'alt_action' 'ALT_ACTION - ERRORS_TRANSLATE.please_try_ms_2_transfer'}}\n  {{/case}}\n  {{#case 'please_try_me_2_transfer'}}\n    {{setVar 'error_text' 'Для перевода средств на карты UnionPay других банков, воспользуйтесь услугой Money Express во вкладке Услуги'}}\n    {{setVar 'alt_action' 'ALT_ACTION - ERRORS_TRANSLATE.please_try_me_2_transfer'}}\n  {{/case}}\n  {{#default}}\n    {{setVar 'error_text' (getVar 'error')}}\n  {{/default}}\n{{/switch}}\n{{setVar 'error_text' (concat (getVar 'error_text') ' ' '(ID: 1s32wiynk)')}}\n\n{{setVar 'type' (body 'type')}}\n{{setVar 'id' (body 'id')}}\n\n{{#switch (getVar 'type')}}\n  {{#case 'pan'}}\n    {{setVar 'pan' (getVar 'id')}}\n  {{/case}}\n  {{#default}}\n    {{setVar 'pan' '4116'}}\n  {{/default}}\n{{/switch}}\n\n{\n  \"data\":\n    {{#if (getVar 'is_error')}}\n      {}\n    {{else}}\n      {\n        \"id\": \"612468\",\n        \"pan\": \"{{getVar 'pan'}}\",\n        \"cover_mini\": null,\n        \"icon\": {\n          \"light\": \"https://storage.googleapis.com/iyb-mobile-app-front/api-live/images/icons/165e5bb4c2c3ba.png\",\n          \"dark\": null\n        },\n        \"name\": \"SHADIYAROV X.\"\n      }\n    {{/if}},\n  \"state\":\n    {{#if (getVar 'is_error')}}\n      \"error\"\n    {{else}}\n      \"success\"\n    {{/if}},\n  \"error_text\":\n    {{#if (getVar 'is_error')}}\n      \"{{getVar 'error_text'}}\"\n    {{else}}\n      \"\"\n    {{/if}},\n  \"code\": {{getVar 'req_code'}},\n  \"action\":\n    {{#if (getVar 'alt_action')}}\n      {{data (getVar 'alt_action')}}\n    {{else}}\n      []\n    {{/if}},\n  \"_mockoon\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "id",
+              "value": "^[0-9]+$",
+              "invert": false,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "type",
+              "value": "^(pan)$",
+              "invert": false,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "8fd64d9f-b8c1-4d08-bb14-ce388671a69d",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "v1/card/byphone/",
+      "responses": [
+        {
+          "uuid": "5b3a426c-7419-4b28-b02b-45ba1ea1d4f8",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "DATABUCKET",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "76859547-a80d-481a-9d97-6501b6b8055f",
+          "body": "{{setVar 'req_code' 0}}\n{{setVar 'is_error' (oneOf (array false false false false false false false false false true))}}\n{{#if (getVar 'is_error')}}\n  {{setVar 'error' (oneOf (array 'no_main_card' 'user_not_found'))}}\n  {{setVar 'req_code' 100}}\n{{/if}}\n{{#switch (getVar 'error')}}\n  {{#case 'no_main_card'}}\n    {{setVar 'error_text' 'Пользователь не указал основную карту'}}\n  {{/case}}\n  {{#case 'user_not_found'}}\n    {{setVar 'error_text' 'Пользователь не найден'}}\n  {{/case}}\n  {{#default}}\n    {{setVar 'error_text' (getVar 'error')}}\n  {{/default}}\n{{/switch}}\n{{setVar 'error_text' (concat (getVar 'error_text') ' ' '(ID: 1s32wiynk)')}}\n\n{\n  \"data\":\n    {{#if (getVar 'is_error')}}\n      {}\n    {{else}}\n      {\n        \"id\": 1,\n        \"name\": \"Ipak Yuli Bank\",\n        \"logo_mini\": {\n          \"light\": \"https://umobile.ipakyulibank.uz:5444/api-live/uploads/resources/banks/e750f5f57d42ca9960758c0a02770c49.png\",\n          \"dark\": null\n        },\n        \"cards\": [\n          {\n            \"id\": \"612468\",\n            \"pan\": \"6116\",\n            \"cover_mini\": {\n              \"light\": \"https://umobile.ipakyulibank.uz:5444/api-live/uploads/resources/card_covers/a5fa993c43e7f5ccde060f0c459ebea6.png\",\n              \"dark\": null\n            },\n            \"icon\": {\n              \"light\": \"https://storage.googleapis.com/iyb-mobile-app-front/api-live/images/icons/165e5bb4c2c3ba.png\",\n              \"dark\": null\n            },\n            \"name\": \"SHADIYAROV X.\"\n          }\n        ]\n      }\n    {{/if}},\n  \"state\":\n    {{#if (getVar 'is_error')}}\n      \"error\"\n    {{else}}\n      \"success\"\n    {{/if}},\n  \"error_text\":\n    {{#if (getVar 'is_error')}}\n      \"{{getVar 'error_text'}}\"\n    {{else}}\n      \"\"\n    {{/if}},\n  \"code\": {{getVar 'req_code'}},\n  \"action\": [],\n  \"_mockoon\": {}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "phone",
+              "value": "^(998)[0-9]{9}$",
+              "invert": false,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
     }
   ],
   "rootChildren": [
@@ -237,6 +360,14 @@
     {
       "type": "route",
       "uuid": "d8300476-ada9-46a4-8ec8-abb964df5d2a"
+    },
+    {
+      "type": "route",
+      "uuid": "9e075322-2fc9-497a-b40f-4d2d3b57fd69"
+    },
+    {
+      "type": "route",
+      "uuid": "8fd64d9f-b8c1-4d08-bb14-ce388671a69d"
     }
   ],
   "proxyMode": false,
@@ -284,6 +415,27 @@
       "name": "additional_items",
       "documentation": "",
       "value": ""
+    },
+    {
+      "uuid": "b85ffccc-5934-4d60-9f3a-9fca61e1115e",
+      "id": "217m",
+      "name": "ALT_ACTION - ERRORS_TRANSLATE.please_try_vd_2_transfer",
+      "documentation": "",
+      "value": "[\r\n    {\r\n        \"key\": \"alt_vd\",\r\n        \"type\": \"modal\",\r\n        \"components\": [\r\n            {\r\n                \"key\": \"modal_text_vd\",\r\n                \"type\": \"modal_text\",\r\n                \"title\": \"Visa Direct\",\r\n                \"subtitle\": \"Для перевода средств на карты VISA других банков, воспользуйтесь услугой VISA Direct\",\r\n                \"is_enabled\": true,\r\n                \"is_on\": true,\r\n                \"icon\": {\r\n                    \"id\": \"601\",\r\n                    \"name\": \"isom_particle_transfer_vd\",\r\n                    \"type\": \"banking_services\",\r\n                    \"links\": {\r\n                        \"light\": \"https://umobile.ipakyulibank.uz:5444/api-live/uploads/resources/images/2018/12/full/ebac24b9d95e80a7a102280982e1081017a0762f.png\",\r\n                        \"dark\": \"https://umobile.ipakyulibank.uz:5444/api-live/uploads/resources/images/2018/12/full/ebac24b9d95e80a7a102280982e1081017a0762f.png\"\r\n                    }\r\n                },\r\n                \"action\": null\r\n            },\r\n            {\r\n                \"key\": \"button_modal_back\",\r\n                \"type\": \"button\",\r\n                \"title\": \"Вернуться\",\r\n                \"subtitle\": null,\r\n                \"is_enabled\": true,\r\n                \"is_on\": true,\r\n                \"icon\": null,\r\n                \"rendering\": {\r\n                    \"key\": \"modal_secondary_button\",\r\n                    \"style\": \"Regular\",\r\n                    \"priority\": \"Secondary\",\r\n                    \"size\": \"Standard\",\r\n                    \"color\": null,\r\n                    \"background_color\": null\r\n                },\r\n                \"actions\": null\r\n            },\r\n            {\r\n                \"key\": \"button_modal_go_vd\",\r\n                \"type\": \"button\",\r\n                \"title\": \"Перейти\",\r\n                \"subtitle\": null,\r\n                \"is_enabled\": true,\r\n                \"is_on\": true,\r\n                \"icon\": null,\r\n                \"rendering\": {\r\n                    \"key\": \"modal_primary_button\",\r\n                    \"style\": \"Accent\",\r\n                    \"priority\": \"Primary\",\r\n                    \"size\": \"Standard\",\r\n                    \"color\": null,\r\n                    \"background_color\": null\r\n                },\r\n                \"actions\": {\r\n                    \"type\": \"deeplink\",\r\n                    \"value\": \"iym://transfers/vd\"\r\n                }\r\n            }\r\n        ]\r\n    }\r\n]"
+    },
+    {
+      "uuid": "1c6c7ac0-d65d-4dd2-91a8-5fb774d32ebe",
+      "id": "e0to",
+      "name": "ALT_ACTION - ERRORS_TRANSLATE.please_try_ms_2_transfer",
+      "documentation": "",
+      "value": "[\r\n    {\r\n        \"key\": \"alt_ms\",\r\n        \"type\": \"modal\",\r\n        \"components\": [\r\n            {\r\n                \"key\": \"modal_text_ms\",\r\n                \"type\": \"modal_text\",\r\n                \"title\": \"MoneySend\",\r\n                \"subtitle\": \"Для перевода средств на карты Mastercard других банков, воспользуйтесь услугой MoneySend\",\r\n                \"is_enabled\": true,\r\n                \"is_on\": true,\r\n                \"icon\": {\r\n                    \"id\": \"602\",\r\n                    \"name\": \"isom_particle_transfer_ms\",\r\n                    \"type\": \"banking_services\",\r\n                    \"links\": {\r\n                        \"light\": \"https://umobile.ipakyulibank.uz:5444/api-live/uploads/resources/images/2018/12/full/ebac24b9d95e80a7a102280982e1081017a0762f.png\",\r\n                        \"dark\": \"https://umobile.ipakyulibank.uz:5444/api-live/uploads/resources/images/2018/12/full/ebac24b9d95e80a7a102280982e1081017a0762f.png\"\r\n                    }\r\n                },\r\n                \"action\": null\r\n            },\r\n            {\r\n                \"key\": \"button_modal_back\",\r\n                \"type\": \"button\",\r\n                \"title\": \"Вернуться\",\r\n                \"subtitle\": null,\r\n                \"is_enabled\": true,\r\n                \"is_on\": true,\r\n                \"icon\": null,\r\n                \"rendering\": {\r\n                    \"key\": \"modal_secondary_button\",\r\n                    \"style\": \"Regular\",\r\n                    \"priority\": \"Secondary\",\r\n                    \"size\": \"Standard\",\r\n                    \"color\": null,\r\n                    \"background_color\": null\r\n                },\r\n                \"actions\": null\r\n            },\r\n            {\r\n                \"key\": \"button_modal_go_ms\",\r\n                \"type\": \"button\",\r\n                \"title\": \"Перейти\",\r\n                \"subtitle\": null,\r\n                \"is_enabled\": true,\r\n                \"is_on\": true,\r\n                \"icon\": null,\r\n                \"rendering\": {\r\n                    \"key\": \"modal_primary_button\",\r\n                    \"style\": \"Accent\",\r\n                    \"priority\": \"Primary\",\r\n                    \"size\": \"Standard\",\r\n                    \"color\": null,\r\n                    \"background_color\": null\r\n                },\r\n                \"actions\": {\r\n                    \"type\": \"deeplink\",\r\n                    \"value\": \"iym://transfers/ms\"\r\n                }\r\n            }\r\n        ]\r\n    }\r\n]"
+    },
+    {
+      "uuid": "82276123-e661-4f30-a532-4d34d7040faf",
+      "id": "hqfw",
+      "name": "ALT_ACTION - ERRORS_TRANSLATE.please_try_me_2_transfer",
+      "documentation": "",
+      "value": "[\r\n    {\r\n        \"key\": \"alt_me\",\r\n        \"type\": \"modal\",\r\n        \"components\": [\r\n            {\r\n                \"key\": \"modal_text_me\",\r\n                \"type\": \"modal_text\",\r\n                \"title\": \"Money Express\",\r\n                \"subtitle\": \"Для перевода средств на карты UnionPay других банков, воспользуйтесь услугой Money Express\",\r\n                \"is_enabled\": true,\r\n                \"is_on\": true,\r\n                \"icon\": {\r\n                    \"id\": \"603\",\r\n                    \"name\": \"isom_particle_transfer_me\",\r\n                    \"type\": \"banking_services\",\r\n                    \"links\": {\r\n                        \"light\": \"https://umobile.ipakyulibank.uz:5444/api-live/uploads/resources/images/2018/12/full/ebac24b9d95e80a7a102280982e1081017a0762f.png\",\r\n                        \"dark\": \"https://umobile.ipakyulibank.uz:5444/api-live/uploads/resources/images/2018/12/full/ebac24b9d95e80a7a102280982e1081017a0762f.png\"\r\n                    }\r\n                },\r\n                \"action\": null\r\n            },\r\n            {\r\n                \"key\": \"button_modal_back\",\r\n                \"type\": \"button\",\r\n                \"title\": \"Вернуться\",\r\n                \"subtitle\": null,\r\n                \"is_enabled\": true,\r\n                \"is_on\": true,\r\n                \"icon\": null,\r\n                \"rendering\": {\r\n                    \"key\": \"modal_secondary_button\",\r\n                    \"style\": \"Regular\",\r\n                    \"priority\": \"Secondary\",\r\n                    \"size\": \"Standard\",\r\n                    \"color\": null,\r\n                    \"background_color\": null\r\n                },\r\n                \"actions\": null\r\n            },\r\n            {\r\n                \"key\": \"button_modal_go_md\",\r\n                \"type\": \"button\",\r\n                \"title\": \"Перейти\",\r\n                \"subtitle\": null,\r\n                \"is_enabled\": true,\r\n                \"is_on\": true,\r\n                \"icon\": null,\r\n                \"rendering\": {\r\n                    \"key\": \"modal_primary_button\",\r\n                    \"style\": \"Accent\",\r\n                    \"priority\": \"Primary\",\r\n                    \"size\": \"Standard\",\r\n                    \"color\": null,\r\n                    \"background_color\": null\r\n                },\r\n                \"actions\": {\r\n                    \"type\": \"deeplink\",\r\n                    \"value\": \"iym://transfers/me\"\r\n                }\r\n            }\r\n        ]\r\n    }\r\n]"
     }
   ],
   "callbacks": []
